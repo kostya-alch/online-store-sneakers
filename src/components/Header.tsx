@@ -18,12 +18,13 @@ const cartItems: ICartItem[] = [
 ];
 
 const Header: FC = () => {
-  const [isShowCart, setIsShowCart] = useState(false);
+  const [isShowCart, setIsShowCart] = useState(false); // стейт для показа товара в корзине
 
-  const total = cartItems.reduce((acc, item) => {
-    // count price
-    return acc + item.count;
-  }, 0);
+  const total = cartItems.reduce((acc, item) => acc + item.price, 0); //вычисляем прайс
+
+  const removeHandler = (id: number) => {
+    console.log(id);
+  };
   return (
     <div
       className="flex items-center justify-between relative 
@@ -32,17 +33,21 @@ const Header: FC = () => {
         background: ' linear-gradient(to right, #0575E6, #00F260)',
       }}
     >
-      <img src={logo} alt="logo" width={55} />
+      <img src={logo} alt="logo" width={80} />
       <button
         className="border-none bg-transparent"
         onClick={() => setIsShowCart(!isShowCart)}
       >
-        <img src={cart} alt="cart" width={40} />
+        <img src={cart} alt="cart" width={55} />
       </button>
       <div
-        className={classNames('absolute top-3 right-0', {
-          hidden: !isShowCart,
-        })}
+        className={classNames(
+          'absolute top-3 right-0 p-5 rounded-md shadow-md',
+          {
+            hidden: !isShowCart,
+          }
+        )}
+        style={{ top: 'calc(72px + 1rem)' }}
       >
         {cartItems.map((item) => (
           <div key={item.id} className="flex items-center">
@@ -56,11 +61,17 @@ const Header: FC = () => {
             <div>
               <div>{item.name}</div>
               <div>{`${item.count} x ${item.price}`}</div>
+              <button
+                onClick={() => removeHandler(item.id)}
+                className="text-red-600 bg-transparent border-0"
+              >
+                Удалить
+              </button>
             </div>
           </div>
         ))}
-        <div className="text-lg">
-          Total:<b>{total}</b>
+        <div className="text-lg border-solid border-t-2 border-l-purple-300 mt-4 pt-1">
+          Total: <b>{total} р.</b>
         </div>
       </div>
     </div>
