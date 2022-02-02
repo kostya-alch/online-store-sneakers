@@ -3,4 +3,5 @@ export interface ICartItem {
   imagePath: string;
   price: number;
   count: number;
+  id: number
 }
