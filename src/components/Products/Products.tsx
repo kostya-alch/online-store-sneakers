@@ -27,10 +27,11 @@ const Products: FC = () => {
       id: 3,
     },
   ];
+
   return (
     <div className="mt-4">
       {products.map((product) => (
-        <ProductItem product={product} />
+        <ProductItem key={product.id} product={product} />
       ))}
     </div>
   );

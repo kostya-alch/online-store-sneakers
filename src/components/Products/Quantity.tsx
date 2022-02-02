@@ -1,10 +1,6 @@
 import { FC, useState } from 'react';
 
-interface IQuantity {
-  count: number;
-}
-
-const Quantity: FC<IQuantity> = () => {
+const Quantity: FC = () => {
   const [count, setCount] = useState(0);
   return (
     <div className="flex items-center">
