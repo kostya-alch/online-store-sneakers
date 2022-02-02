@@ -14,6 +14,13 @@ const ProductItem: FC<IProductItem> = ({ product }) => {
     <div
       className="shadow-sm rounded-md p-5 w-4/5 mx-auto bg-white flex justify-center flex-col
     text-center mt-7 items-center last:mb-20 "
+      style={{
+        borderRadius: '50px',
+        // background: 'linear-gradient(145deg, #cacaca, #f0f0f0)',
+        boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
+        background:
+          'linear-gradient(to right, #e0eafc, #cfdef3) ' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+      }}
     >
       <img src={product.imagePath} alt={product.name} width={220} />
       <div className="text-lg font-bold my-1">{product.name}</div>
