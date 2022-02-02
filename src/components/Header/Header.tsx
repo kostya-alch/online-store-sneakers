@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { FC, useState } from 'react';
-import logo from '../assets/img/logo.svg';
-import { ICartItem } from '../types/types';
+import logo from '../../assets/img/logo.svg';
+import { ICartItem } from '../../types/types';
 
-import cart from '../assets/img/cart.svg';
+import cart from '../../assets/img/cart.svg';
 
 const cartItems: ICartItem[] = [
   // mock
@@ -19,9 +19,7 @@ const cartItems: ICartItem[] = [
 
 const Header: FC = () => {
   const [isShowCart, setIsShowCart] = useState(false); // стейт для показа товара в корзине
-
   const total = cartItems.reduce((acc, item) => acc + item.price, 0); //вычисляем прайс
-
   const removeHandler = (id: number) => {
     console.log(id);
   };
