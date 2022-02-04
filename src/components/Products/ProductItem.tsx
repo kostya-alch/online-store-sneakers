@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItemToCartAC } from '../../store/cart/cartActions';
 import { IProduct } from '../../types/types';
 import Quantity from './Quantity';
 
@@ -7,8 +9,10 @@ interface IProductItem {
 }
 
 const ProductItem: FC<IProductItem> = ({ product }) => {
+  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
   const addHandler = () => {
-    console.log('add');
+    dispatch(addItemToCartAC(product, count));
   };
   return (
     <div
@@ -22,12 +26,18 @@ const ProductItem: FC<IProductItem> = ({ product }) => {
           'linear-gradient(to right, #e0eafc, #cfdef3) ' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
       }}
     >
-      <img src={product.imagePath} alt={product.name} width={220} />
+      <img
+        src={product.imagePath}
+        className="rounded-md"
+        alt={product.name}
+        width={220}
+      />
       <div className="text-lg font-bold my-1">{product.name}</div>
       <div className="text-lg text-gray-600">{product.price}р.</div>
-      <Quantity />
+      <Quantity setCount={setCount} count={count} />
       <button
-        className="bg-green-500 font-semibold px-3 py-1 mt-2 text-white rounded-sm hover:bg-green-600"
+        className="bg-green-500 font-semibold px-3 py-1 mt-2 text-white rounded-sm 
+        hover:bg-green-600"
         onClick={() => addHandler()}
       >
         В корзину
