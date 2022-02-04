@@ -11,12 +11,13 @@ interface IProductItem {
 const ProductItem: FC<IProductItem> = ({ product }) => {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
+  
   const addHandler = () => {
     dispatch(addItemToCartAC(product, count));
   };
   return (
     <div
-      className="shadow-sm rounded-md p-5 w-4/5 mx-auto bg-white flex justify-center flex-col
+      className="max-w-screen-md shadow-sm rounded-md p-5 w-4/5 mx-auto bg-white flex justify-center flex-col
     text-center mt-7 items-center last:mb-20 "
       style={{
         borderRadius: '50px',

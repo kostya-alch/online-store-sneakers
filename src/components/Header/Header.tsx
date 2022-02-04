@@ -1,26 +1,15 @@
 import classNames from 'classnames';
 import { FC, useState } from 'react';
 import logo from '../../assets/img/logo.svg';
-import { ICartItem } from '../../types/types';
 
-import cart from '../../assets/img/cart.svg';
-
-const cartItems: ICartItem[] = [
-  // mock
-  {
-    id: 1,
-    imagePath:
-      'https://static.street-beat.ru/upload/resize_cache/iblock/168/500_500_1/1684b1c9efc664ee80a4996aadffe81e.jpg',
-    name: 'Jordan Max Aura 3',
-    count: 1,
-    price: 11229,
-  },
-];
+import cartIcon from '../../assets/img/cart.svg';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Header: FC = () => {
   const [isShowCart, setIsShowCart] = useState(false); // стейт для показа товара в корзине
+  const cart = useTypedSelector((state) => state.cart);
 
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0); //вычисляем прайс
+  const total = cart.reduce((acc, item) => acc + item.price, 0); //вычисляем прайс
 
   const removeHandler = (id: number) => {
     console.log(id);
@@ -35,10 +24,16 @@ const Header: FC = () => {
     >
       <img src={logo} alt="logo" width={80} />
       <button
-        className="border-none bg-transparent"
+        className="border-none bg-transparent relative"
         onClick={() => setIsShowCart(!isShowCart)}
       >
-        <img src={cart} alt="cart" width={55} />
+        <img src={cartIcon} alt="cart" width={55} />
+        <div
+          className="text-red-600 absolute bottom-0 right-1
+        font-bold rounded-full bg-white w-5 h-5 flex items-center justify-center"
+        >
+          {cart.length}
+        </div>
       </button>
       <div
         className={classNames(
@@ -49,7 +44,7 @@ const Header: FC = () => {
         )}
         style={{ top: 'calc(72px + 1rem)' }}
       >
-        {cartItems.map((item) => (
+        {cart.map((item) => (
           <div key={item.id} className="flex items-center">
             <img
               src={item.imagePath}
