@@ -4,23 +4,22 @@ import logo from '../../assets/img/logo.svg';
 
 import cartIcon from '../../assets/img/cart.svg';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
+import { removeItemToCartAC } from '../../store/cart/cartActions';
 
 const Header: FC = () => {
   const [isShowCart, setIsShowCart] = useState(false); // стейт для показа товара в корзине
   const cart = useTypedSelector((state) => state.cart);
-
+  const dispatch = useDispatch();
   const total = cart.reduce((acc, item) => acc + item.price, 0); //вычисляем прайс
 
   const removeHandler = (id: number) => {
-    console.log(id);
+    dispatch(removeItemToCartAC(id));
   };
   return (
     <div
-      className=" flex items-center justify-between relative 
-    bg-emerald-300 w-full py-1 px-3"
-      style={{
-        background: ' linear-gradient(to right, #0575E6, #00F260)',
-      }}
+      className="flex items-center justify-between relativ bg-emerald-300 w-full py-1 px-3"
+      style={{ background: ' linear-gradient(to right, #0575E6, #00F260)' }}
     >
       <img src={logo} alt="logo" width={80} />
       <button

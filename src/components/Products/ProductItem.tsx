@@ -11,7 +11,7 @@ interface IProductItem {
 const ProductItem: FC<IProductItem> = ({ product }) => {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
-  
+
   const addHandler = () => {
     dispatch(addItemToCartAC(product, count));
   };
@@ -29,7 +29,7 @@ const ProductItem: FC<IProductItem> = ({ product }) => {
     >
       <img
         src={product.imagePath}
-        className="rounded-md"
+        className="rounded-3xl"
         alt={product.name}
         width={220}
       />
