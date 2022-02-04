@@ -45,7 +45,7 @@ const Header: FC = () => {
         style={{ top: 'calc(72px + 1rem)' }}
       >
         {cart.map((item) => (
-          <div key={item.id} className="flex items-center">
+          <div key={item.id} className="flex items-center mb-3">
             <img
               src={item.imagePath}
               alt={item.name}
@@ -55,10 +55,10 @@ const Header: FC = () => {
             />
             <div>
               <div>{item.name}</div>
-              <div>{`${item.count} x ${item.price}`}</div>
+              <div>{`${item.count} x ${item.price.toLocaleString()}р.`}</div>
               <button
                 onClick={() => removeHandler(item.id)}
-                className="text-red-600 bg-transparent border-0"
+                className="text-white bg-violet-500 rounded rounded-2x1 p-0.5 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"
               >
                 Удалить
               </button>
@@ -66,7 +66,7 @@ const Header: FC = () => {
           </div>
         ))}
         <div className="text-lg border-solid border-t-2 border-l-purple-300 mt-4 pt-1">
-          Total: <b>{total} р.</b>
+          Total: <b>{total.toLocaleString()} р.</b>
         </div>
       </div>
     </div>
