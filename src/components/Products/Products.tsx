@@ -3,8 +3,8 @@ import { IProduct } from '../../types/types';
 import ProductItem from './ProductItem';
 
 const Products: FC = () => {
-  // mock
   const products: IProduct[] = [
+    // mock
     {
       name: 'New Balance 997',
       imagePath:

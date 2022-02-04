@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemToCartAC } from '../../store/cart/cartActions';
 import { IProduct } from '../../types/types';
@@ -9,7 +9,7 @@ interface IProductItem {
 }
 
 const ProductItem: FC<IProductItem> = ({ product }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const dispatch = useDispatch();
 
   const addHandler = () => {
@@ -37,8 +37,8 @@ const ProductItem: FC<IProductItem> = ({ product }) => {
       <div className="text-lg text-gray-600">{product.price}р.</div>
       <Quantity setCount={setCount} count={count} />
       <button
-        className="bg-green-500 font-semibold px-3 py-1 mt-2 text-white rounded-sm 
-        hover:bg-green-600"
+        className="bg-green-500 font-semibold px-3 py-1 mt-2 text-white rounded-lg 
+        hover:bg-green-600 active:bg-green-800"
         onClick={() => addHandler()}
       >
         В корзину
