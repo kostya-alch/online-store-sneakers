@@ -53,7 +53,7 @@ const Header: FC = () => {
               className="mr-3"
             />
             <div>
-              <div>{item.name}</div>
+              <div className="font-bold">{item.name}</div>
               <div>{`${item.count} x ${item.price.toLocaleString()}р.`}</div>
               <button
                 onClick={() => removeHandler(item.id)}
@@ -65,7 +65,7 @@ const Header: FC = () => {
           </div>
         ))}
         <div className="text-lg border-solid border-t-2 border-l-purple-300 mt-4 pt-1">
-          Total: <b>{total.toLocaleString()} р.</b>
+          Итого: <b>{total.toLocaleString()} р.</b>
         </div>
       </div>
     </div>

@@ -26,6 +26,27 @@ const Products: FC = () => {
       price: 9999,
       id: 3,
     },
+    {
+      name: 'Nike Waffle Trainer 2',
+      imagePath:
+        'https://static.street-beat.ru/upload/resize_cache/iblock/bc5/500_500_1/bc5385a29981362686a269f24e4ae75b.jpg',
+      price: 12993,
+      id: 4,
+    },
+    {
+      name: 'Nike LeBron Witness 5',
+      imagePath:
+        'https://static.street-beat.ru/upload/resize_cache/iblock/f91/500_500_1/f9119ee4cc717ae932cd9f94c0538363.jpg',
+      price: 8650,
+      id: 5,
+    },
+    {
+      name: 'Adidas Performance Dame 8',
+      imagePath:
+        'https://static.street-beat.ru/upload/resize_cache/iblock/816/500_500_1/8161cbfc99d73e0f4f95e8bb3b16ee37.jpg',
+      price: 15323,
+      id: 6,
+    },
   ];
 
   return (
