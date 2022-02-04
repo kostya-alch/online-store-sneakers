@@ -27,7 +27,7 @@ const ProductItem: FC<IProductItem> = ({ product }) => {
       <div className="text-lg text-gray-600">{product.price}р.</div>
       <Quantity />
       <button
-        className="bg-green-500 font-semibold px-3 py-1 text-white rounded-sm hover:bg-green-600"
+        className="bg-green-500 font-semibold px-3 py-1 mt-2 text-white rounded-sm hover:bg-green-600"
         onClick={() => addHandler()}
       >
         В корзину
